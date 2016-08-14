@@ -20,10 +20,10 @@ public class FamilyMemberActivity extends AppCompatActivity {
         dataItems.add(new DataItem(R.drawable.family_mother, "Mother", "Maan(मां)", "Talli"));
         dataItems.add(new DataItem(R.drawable.family_son, "Son", "Beta(बेटा)", "Kumāruḍu"));
         dataItems.add(new DataItem(R.drawable.family_daughter, "Daughter", "Betee(बेटी)", "kumārte"));
-        dataItems.add(new DataItem(R.drawable.family_older_brother, "Elder Brother", "Bada Bhaee(बड़ा भाई)", "Annayya"));
-        dataItems.add(new DataItem(R.drawable.family_older_sister, "Elder Sister", "Badee Bahan(बड़ी बहन)", "Akka"));
-        dataItems.add(new DataItem(R.drawable.family_younger_brother, "Younger Brother", "Chhota Bhaee(छोटा भाई)", "Tam'muḍu"));
-        dataItems.add(new DataItem(R.drawable.family_younger_sister, "Younger Sister", "Chhotee Bahan(छोटी बहन)", "Chinna Celli"));
+        dataItems.add(new DataItem(R.drawable.family_older_brother, "Elder Brother", "Bhaiyya(भैया)", "Annayya"));
+        dataItems.add(new DataItem(R.drawable.family_older_sister, "Elder Sister", "Deedee(दीदी)", "Akka"));
+        dataItems.add(new DataItem(R.drawable.family_younger_brother, "Younger Brother", "Bhaee(भाई)", "Tam'muḍu"));
+        dataItems.add(new DataItem(R.drawable.family_younger_sister, "Younger Sister", "Bahan(बहन)", "Chinna Celli"));
 
         DataAdapter adapter = new DataAdapter(this, dataItems);
         ListView familyItemListView = (ListView) findViewById(R.id.family_item_listview);
