@@ -5,27 +5,38 @@ package io.github.sanjeet291196.express;
  * Project: Express
  */
 public class DataItem {
-    private int image;
+    private int ImageResourceId;
     private String EnglishTranslation;
     private String HindiTranslation;
     private String LocalTranslation;
+    private boolean plus10;
 
-    public DataItem(int image, String englishTranslation, String hindiTranslation, String localTranslation) {
-        this.image = image;
+    public DataItem(int imageResourceId, String englishTranslation, String hindiTranslation, String localTranslation, boolean plus10) {
+        ImageResourceId = imageResourceId;
         EnglishTranslation = englishTranslation;
         HindiTranslation = hindiTranslation;
         LocalTranslation = localTranslation;
+        this.plus10 = plus10;
+    }
+
+    public DataItem(int imageResourceId, String englishTranslation, String hindiTranslation, String localTranslation) {
+        ImageResourceId = imageResourceId;
+        EnglishTranslation = englishTranslation;
+        HindiTranslation = hindiTranslation;
+        LocalTranslation = localTranslation;
+        plus10 = false;
     }
 
     public DataItem(String englishTranslation, String hindiTranslation, String localTranslation) {
-        image = R.mipmap.ic_launcher;
+        ImageResourceId = R.mipmap.ic_launcher;
         EnglishTranslation = englishTranslation;
         HindiTranslation = hindiTranslation;
         LocalTranslation = localTranslation;
+        plus10 = false;
     }
 
-    public int getImage() {
-        return image;
+    public int getImageResourceId() {
+        return ImageResourceId;
     }
 
     public String getEnglishTranslation() {
@@ -40,4 +51,7 @@ public class DataItem {
         return LocalTranslation;
     }
 
+    public boolean isPlus10() {
+        return plus10;
+    }
 }
