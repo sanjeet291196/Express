@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Express</string>
+    <string name="numbers">Numbers</string>
+    <string name="colors">Colors</string>
+    <string name="family">Family Members</string>
+    <string name="phrase">Phrase</string>
 </resources>

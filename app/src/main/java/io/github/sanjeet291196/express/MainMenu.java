@@ -2,6 +2,7 @@ package io.github.sanjeet291196.express;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -10,6 +11,17 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        int a;
+    }
+
+    public void showNumberActivity(View view) {
+    }
+
+    public void showFamilyActivity(View view) {
+    }
+
+    public void showColorsActivity(View view) {
+    }
+
+    public void showPhraseActivity(View view) {
     }
 }
