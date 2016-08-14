@@ -1,6 +1,7 @@
 package io.github.sanjeet291196.express;
 
 import android.content.Context;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +10,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by sanjit on 14/8/16.
  * Project: Express
  */
 public class DataAdapter extends ArrayAdapter<DataItem> {
+
+    final TextToSpeech t1 = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+        @Override
+        public void onInit(int status) {
+        }
+    });
+
     public DataAdapter(Context context, List<DataItem> objects) {
         super(context, 0, objects);
     }
@@ -36,7 +45,7 @@ public class DataAdapter extends ArrayAdapter<DataItem> {
         }
 
         // get the current data item object
-        DataItem currentDataItem = getItem(position);
+        final DataItem currentDataItem = getItem(position);
 
         // link to icon on left side of each list item
         ImageView icon = (ImageView) dataView.findViewById(R.id.ItemIcon);
@@ -82,6 +91,17 @@ public class DataAdapter extends ArrayAdapter<DataItem> {
         TextView localTranslation = (TextView) dataView.findViewById(R.id.ItemLocalTranslation);
         // set the local language translation text view to show local language translation
         localTranslation.setText(currentDataItem.getLocalTranslation());
+
+
+        t1.setLanguage(Locale.US);
+
+        dataView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String toSpeak = currentDataItem.getHindiTranslation();
+                t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+            }
+        });
 
         //return the view
         return dataView;

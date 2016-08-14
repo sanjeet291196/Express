@@ -21,7 +21,7 @@ public class PhraseActivity extends AppCompatActivity {
         ArrayList<DataItem> dataItems = new ArrayList<>();
         // add phrase data items to dataItems array list
         dataItems.add(new DataItem("Where are you Going?", "Tum kahaan ja rahe ho?(तुम कहाँ जा रहे हो?)", "Nuvvu ekkaḍiki veḷutunnāvu?"));
-        dataItems.add(new DataItem("What is your name?", "Aapaka naam kya hai?(आपका नाम क्या है?)", "Nī pēru ēmiṭi?"));
+        dataItems.add(new DataItem("What is your name?", "Aapka naam kya hai?(आपका नाम क्या है?)", "Nī pēru ēmiṭi?"));
         dataItems.add(new DataItem("My Name is ...", "Mera naam ... hai(मेरा नाम ... है।)", "Nā pēru..."));
         dataItems.add(new DataItem("How are you?", "Aap kese ho?(आप कैसे हो?)", "Mīru elā unnāru?"));
         dataItems.add(new DataItem("I'm good.", "Main achchha hoon.(मैं अच्छा हूँ।)", "Nēnu man̄ci reḍī."));
