@@ -14,7 +14,7 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
         ArrayList<DataItem> dataItems = new ArrayList<>();
-        dataItems.add(new DataItem(R.drawable.number_one, "One", "Ek(एक)", "Oka"));
+        dataItems.add(new DataItem(R.drawable.number_one, "One", "Ek(एक)", "Okati"));
         dataItems.add(new DataItem(R.drawable.number_two, "Two", "Do(दो)", "reṇḍu"));
         dataItems.add(new DataItem(R.drawable.number_three, "Three", "Teen(तीन)", "mūḍu"));
         dataItems.add(new DataItem(R.drawable.number_four, "Four", "Chaar(चार)", "nālugu"));
