@@ -6,6 +6,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+/**
+ * @author sanjit
+ *         ColorsActivity to diplay colors in different language
+ */
 public class ColorsActivity extends AppCompatActivity {
 
     @Override
@@ -13,7 +17,10 @@ public class ColorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colors);
 
+        // array list to store data items
         ArrayList<DataItem> dataItems = new ArrayList<>();
+
+        // add color data items to dataItems array list
         dataItems.add(new DataItem(R.drawable.color_black, "Black", "Kaala(काला)", ""));
         dataItems.add(new DataItem(R.drawable.color_brown, "Brown", "Bhoora(भूरा)", ""));
         dataItems.add(new DataItem(R.drawable.color_dusty_yellow, "Dusty Yellow", "Gehra Peela(गहरा पीला)", ""));
@@ -23,9 +30,13 @@ public class ColorsActivity extends AppCompatActivity {
         dataItems.add(new DataItem(R.drawable.color_red, "Red", "Laal(लाल)", ""));
         dataItems.add(new DataItem(R.drawable.color_white, "White", "Saphed(सफेद)", ""));
 
+        // adapter for linking dataItems to colorItemListView
         DataAdapter adapter = new DataAdapter(this, dataItems);
+        // colorItemListView to display colors in related list
         ListView colorItemListView = (ListView) findViewById(R.id.color_item_listview);
+        // set the adapter for the colorItemListView
         colorItemListView.setAdapter(adapter);
+        // notify the adapter to refresh the list
         adapter.notifyDataSetChanged();
 
     }

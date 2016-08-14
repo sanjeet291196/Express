@@ -19,41 +19,71 @@ public class DataAdapter extends ArrayAdapter<DataItem> {
         super(context, 0, objects);
     }
 
+    /**
+     * @param position    represents current object position in the object list
+     * @param convertView view that is to be used for placing in list view
+     * @param parent      parent view group
+     * @return view to be displayed in list view
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View dataView = convertView;
+
+        // if provided view is not initialised
         if (dataView == null) {
+            //  make a required view for it
             dataView = LayoutInflater.from(getContext()).inflate(R.layout.item_list, parent, false);
         }
 
+        // get the current data item object
         DataItem currentDataItem = getItem(position);
 
+        // link to icon on left side of each list item
         ImageView icon = (ImageView) dataView.findViewById(R.id.ItemIcon);
+        // link to icon on right side of each list item
         ImageView icon2 = (ImageView) dataView.findViewById(R.id.ItemIcon2);
 
+        // if current data is a phrase
         if (currentDataItem.isPhrase()) {
+            // hide the icon on left
             icon.setVisibility(View.GONE);
+            //hide the icon on right
             icon2.setVisibility(View.GONE);
-        } else {
+        } else {    // otherwise
+            // set the icon on left to be visible, if it was hidden by some other call
+            icon.setVisibility(View.VISIBLE);
+            // if data is a number greater than 10 then
             if (currentDataItem.isPlus10()) {
+                // set left side icon as image representing 10
                 icon.setImageResource(R.drawable.number_ten);
+                // set right side icon as image resource stored in currentDataItem
                 icon2.setImageResource(currentDataItem.getImageResourceId());
+                // set the icon on right to be visible
                 icon2.setVisibility(View.VISIBLE);
-            } else {
+            } else { // otherwise
+                // set icon on left as image stored in currentDataItem
                 icon.setImageResource(currentDataItem.getImageResourceId());
+                // hide the icon on right
                 icon2.setVisibility(View.GONE);
             }
         }
 
+        // link to english translation text view
         TextView englishTranslation = (TextView) dataView.findViewById(R.id.ItemEnglishTranslation);
+        // set the english translation text view to show english translation
         englishTranslation.setText(currentDataItem.getEnglishTranslation());
 
+        // link to hindi translation text view
         TextView hindiTranslation = (TextView) dataView.findViewById(R.id.ItemHindiTranslation);
+        // set the hindi translation text view to show hindi translation
         hindiTranslation.setText(currentDataItem.getHindiTranslation());
 
+        // link to local language translation text view
         TextView localTranslation = (TextView) dataView.findViewById(R.id.ItemLocalTranslation);
+        // set the local language translation text view to show local language translation
         localTranslation.setText(currentDataItem.getLocalTranslation());
 
+        //return the view
         return dataView;
     }
 }

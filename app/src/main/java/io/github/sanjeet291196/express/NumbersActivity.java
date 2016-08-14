@@ -6,6 +6,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+/**
+ * @author sanjit
+ *         NumbersActivity to diplay number pronounciation in different languages
+ */
 public class NumbersActivity extends AppCompatActivity {
 
     @Override
@@ -13,7 +17,9 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
+        // array list to store data items
         ArrayList<DataItem> dataItems = new ArrayList<>();
+        // add number data items to dataItems array list
         dataItems.add(new DataItem(R.drawable.number_one, "One", "Ek(एक)", "Okati"));
         dataItems.add(new DataItem(R.drawable.number_two, "Two", "Do(दो)", "Reṇḍu"));
         dataItems.add(new DataItem(R.drawable.number_three, "Three", "Teen(तीन)", "Mūḍu"));
@@ -25,6 +31,7 @@ public class NumbersActivity extends AppCompatActivity {
         dataItems.add(new DataItem(R.drawable.number_nine, "Nine", "Nau(नौ)", "Tom'midi"));
         dataItems.add(new DataItem(R.drawable.number_ten, "Ten", "Das(दस)", "Padi"));
 
+        // add number greater than 10 data items to dataItems array list
         dataItems.add(new DataItem(R.drawable.number_one, "Eleven", "Gyaarah(ग्यारह)", "Padakoṇḍu", true));
         dataItems.add(new DataItem(R.drawable.number_two, "Twelve", "Baarah(बारह)", "Panneṇḍu", true));
         dataItems.add(new DataItem(R.drawable.number_three, "Thirteen", "Terah(तेरह)", "Padamūḍu", true));
@@ -36,9 +43,13 @@ public class NumbersActivity extends AppCompatActivity {
         dataItems.add(new DataItem(R.drawable.number_nine, "Nineteen", "Unnees(उन्नीस)", "Nainṭīn", true));
         dataItems.add(new DataItem(R.drawable.number_ten, "Twenty", "Bees(बीस)", "Iravai", true));
 
+        // adapter for linking dataItems to numberItemListView
         DataAdapter adapter = new DataAdapter(this, dataItems);
+        // numberItemListView to display colors in related list
         ListView numberItemListView = (ListView) findViewById(R.id.number_item_listview);
+        // set the adapter for the numberItemListView
         numberItemListView.setAdapter(adapter);
+        // notify the adapter to refresh the list
         adapter.notifyDataSetChanged();
     }
 }

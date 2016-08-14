@@ -6,6 +6,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+/**
+ * @author sanjit
+ *         PhraseActivity to display common phrases translations in different languages
+ */
 public class PhraseActivity extends AppCompatActivity {
 
     @Override
@@ -13,7 +17,9 @@ public class PhraseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrase);
 
+        // array list to store data items
         ArrayList<DataItem> dataItems = new ArrayList<>();
+        // add phrase data items to dataItems array list
         dataItems.add(new DataItem("Where are you Going?", "Tum kahaan ja rahe ho?(तुम कहाँ जा रहे हो?)", "Nuvvu ekkaḍiki veḷutunnāvu?"));
         dataItems.add(new DataItem("What is your name?", "Aapaka naam kya hai?(आपका नाम क्या है?)", "Nī pēru ēmiṭi?"));
         dataItems.add(new DataItem("My Name is ...", "Mera naam ... hai(मेरा नाम ... है।)", "Nā pēru..."));
@@ -26,9 +32,13 @@ public class PhraseActivity extends AppCompatActivity {
         dataItems.add(new DataItem("Lets go.", "Chalie chalate hain.(चलिए चलते हैं।)", "Yokka veḷḷi telapaṇḍi."));
         dataItems.add(new DataItem("Come here.", "Yahaan aao.(यहाँ आओ।)", "Ikkaḍa vastāyi."));
 
+        // adapter for linking dataItems to phraseItemListView
         DataAdapter adapter = new DataAdapter(this, dataItems);
+        // phraseItemListView to display colors in related list
         ListView phraseItemListView = (ListView) findViewById(R.id.phrase_item_listview);
+        // set the adapter for the phraseItemListView
         phraseItemListView.setAdapter(adapter);
+        // notify the adapter to refresh the list
         adapter.notifyDataSetChanged();
     }
 }
