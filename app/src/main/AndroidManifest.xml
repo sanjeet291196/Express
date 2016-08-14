@@ -23,6 +23,10 @@
                     android:scheme="http" />
             </intent-filter>
         </activity>
+        <activity android:name=".NumbersActivity" />
+        <activity android:name=".FamilyMemberActivity" />
+        <activity android:name=".ColorsActivity" />
+        <activity android:name=".PhraseActivity"></activity>
     </application>
 
 </manifest>
