@@ -37,7 +37,7 @@ public class NumbersActivity extends AppCompatActivity {
         dataItems.add(new DataItem(R.drawable.number_ten, "Twenty", "Bees(बीस)", "iravai", true));
 
         DataAdapter adapter = new DataAdapter(this, dataItems);
-        ListView numberItemListView = (ListView) findViewById(R.id.NumberItemListView);
+        ListView numberItemListView = (ListView) findViewById(R.id.number_item_listview);
         numberItemListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

@@ -26,7 +26,7 @@ public class FamilyMemberActivity extends AppCompatActivity {
         dataItems.add(new DataItem(R.drawable.family_younger_sister, "Younger Sister", "Chhotee Bahan(छोटी बहन)", "Chinna Celli"));
 
         DataAdapter adapter = new DataAdapter(this, dataItems);
-        ListView familyItemListView = (ListView) findViewById(R.id.FamilyItemListView);
+        ListView familyItemListView = (ListView) findViewById(R.id.family_item_listview);
         familyItemListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

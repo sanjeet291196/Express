@@ -9,14 +9,15 @@ public class DataItem {
     private String EnglishTranslation;
     private String HindiTranslation;
     private String LocalTranslation;
-    private boolean plus10;
+    private boolean Plus10;
+    private boolean Phrase;
 
     public DataItem(int imageResourceId, String englishTranslation, String hindiTranslation, String localTranslation, boolean plus10) {
         ImageResourceId = imageResourceId;
         EnglishTranslation = englishTranslation;
         HindiTranslation = hindiTranslation;
         LocalTranslation = localTranslation;
-        this.plus10 = plus10;
+        this.Plus10 = plus10;
     }
 
     public DataItem(int imageResourceId, String englishTranslation, String hindiTranslation, String localTranslation) {
@@ -24,15 +25,16 @@ public class DataItem {
         EnglishTranslation = englishTranslation;
         HindiTranslation = hindiTranslation;
         LocalTranslation = localTranslation;
-        plus10 = false;
+        Plus10 = false;
     }
 
     public DataItem(String englishTranslation, String hindiTranslation, String localTranslation) {
-        ImageResourceId = R.mipmap.ic_launcher;
+        ImageResourceId = 0;
         EnglishTranslation = englishTranslation;
         HindiTranslation = hindiTranslation;
         LocalTranslation = localTranslation;
-        plus10 = false;
+        Plus10 = false;
+        Phrase = true;
     }
 
     public int getImageResourceId() {
@@ -52,6 +54,10 @@ public class DataItem {
     }
 
     public boolean isPlus10() {
-        return plus10;
+        return Plus10;
+    }
+
+    public boolean isPhrase() {
+        return Phrase;
     }
 }

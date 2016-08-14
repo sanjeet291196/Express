@@ -31,13 +31,18 @@ public class DataAdapter extends ArrayAdapter<DataItem> {
         ImageView icon = (ImageView) dataView.findViewById(R.id.ItemIcon);
         ImageView icon2 = (ImageView) dataView.findViewById(R.id.ItemIcon2);
 
-        if (currentDataItem.isPlus10()) {
-            icon.setImageResource(R.drawable.number_ten);
-            icon2.setImageResource(currentDataItem.getImageResourceId());
-            icon2.setVisibility(View.VISIBLE);
-        } else {
-            icon.setImageResource(currentDataItem.getImageResourceId());
+        if (currentDataItem.isPhrase()) {
+            icon.setVisibility(View.GONE);
             icon2.setVisibility(View.GONE);
+        } else {
+            if (currentDataItem.isPlus10()) {
+                icon.setImageResource(R.drawable.number_ten);
+                icon2.setImageResource(currentDataItem.getImageResourceId());
+                icon2.setVisibility(View.VISIBLE);
+            } else {
+                icon.setImageResource(currentDataItem.getImageResourceId());
+                icon2.setVisibility(View.GONE);
+            }
         }
 
         TextView englishTranslation = (TextView) dataView.findViewById(R.id.ItemEnglishTranslation);

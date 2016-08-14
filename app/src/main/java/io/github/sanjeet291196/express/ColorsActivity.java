@@ -24,7 +24,7 @@ public class ColorsActivity extends AppCompatActivity {
         dataItems.add(new DataItem(R.drawable.color_white, "White", "Saphed(सफेद)", ""));
 
         DataAdapter adapter = new DataAdapter(this, dataItems);
-        ListView colorItemListView = (ListView) findViewById(R.id.ColorItemListView);
+        ListView colorItemListView = (ListView) findViewById(R.id.color_item_listview);
         colorItemListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
