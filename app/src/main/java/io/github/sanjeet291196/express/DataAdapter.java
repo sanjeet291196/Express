@@ -29,7 +29,16 @@ public class DataAdapter extends ArrayAdapter<DataItem> {
         DataItem currentDataItem = getItem(position);
 
         ImageView icon = (ImageView) dataView.findViewById(R.id.ItemIcon);
-        icon.setImageResource(currentDataItem.getImage());
+        ImageView icon2 = (ImageView) dataView.findViewById(R.id.ItemIcon2);
+
+        if (currentDataItem.isPlus10()) {
+            icon.setImageResource(R.drawable.number_ten);
+            icon2.setImageResource(currentDataItem.getImageResourceId());
+            icon2.setVisibility(View.VISIBLE);
+        } else {
+            icon.setImageResource(currentDataItem.getImageResourceId());
+            icon2.setVisibility(View.GONE);
+        }
 
         TextView englishTranslation = (TextView) dataView.findViewById(R.id.ItemEnglishTranslation);
         englishTranslation.setText(currentDataItem.getEnglishTranslation());
