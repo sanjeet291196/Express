@@ -1,57 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:orientation="vertical"
     tools:context="io.github.sanjeet291196.express.MainMenu">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height"
-        android:background="@color/colorNumbers"
-        android:gravity="center_vertical"
-        android:onClick="showNumberActivity"
-        android:padding="@dimen/padding"
-        android:text="@string/numbers"
-        android:textColor="@color/colorText"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height"
-        android:background="@color/colorFamily"
-        android:gravity="center_vertical"
-        android:onClick="showFamilyActivity"
-        android:padding="@dimen/padding"
-        android:text="@string/family"
-        android:textColor="@color/colorText"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height"
+            android:background="@color/colorNumbers"
+            android:gravity="center_vertical"
+            android:onClick="showNumberActivity"
+            android:padding="@dimen/padding"
+            android:text="@string/numbers"
+            android:textColor="@color/colorText"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height"
-        android:background="@color/colorColors"
-        android:gravity="center_vertical"
-        android:onClick="showColorsActivity"
-        android:padding="@dimen/padding"
-        android:text="@string/colors"
-        android:textColor="@color/colorText"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height"
+            android:background="@color/colorFamily"
+            android:gravity="center_vertical"
+            android:onClick="showFamilyActivity"
+            android:padding="@dimen/padding"
+            android:text="@string/family"
+            android:textColor="@color/colorText"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height"
-        android:background="@color/colorPhrase"
-        android:gravity="center_vertical"
-        android:onClick="showPhraseActivity"
-        android:padding="@dimen/padding"
-        android:text="@string/phrase"
-        android:textColor="@color/colorText"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height"
+            android:background="@color/colorColors"
+            android:gravity="center_vertical"
+            android:onClick="showColorsActivity"
+            android:padding="@dimen/padding"
+            android:text="@string/colors"
+            android:textColor="@color/colorText"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height"
+            android:background="@color/colorPhrase"
+            android:gravity="center_vertical"
+            android:onClick="showPhraseActivity"
+            android:padding="@dimen/padding"
+            android:text="@string/phrase"
+            android:textColor="@color/colorText"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</ScrollView>
