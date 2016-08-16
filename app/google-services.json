@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "866206412680",
+    "firebase_url": "https://express-b6fef.firebaseio.com",
+    "project_id": "express-b6fef",
+    "storage_bucket": "express-b6fef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866206412680:android:7e48d1907ede5643",
+        "android_client_info": {
+          "package_name": "io.github.sanjeet291196.express"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866206412680-2d30et1r57ctv0qgh7k9v3ft25tufu8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBELG__qtdTaukVi8QFYvu1kh6OfZtrsfE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
