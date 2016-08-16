@@ -8,12 +8,16 @@ import android.view.View;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * @author sanjit
  *         MainMenu to display main menu as soon as the app launches
  */
 public class MainMenu extends AppCompatActivity {
+
+
+    public static final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,8 @@ public class MainMenu extends AppCompatActivity {
                 .addTestDevice("B57E80B764791677F26544661D06015F")
                 .build();
         adView.loadAd(adRequest);
+
+        database.setPersistenceEnabled(true);
 
     }
 
@@ -42,6 +48,7 @@ public class MainMenu extends AppCompatActivity {
 
     /**
      * Starts FamilyMemberActivity
+     *
      * @param view which calls this function by onClickk event
      */
     public void showFamilyActivity(View view) {
@@ -50,6 +57,7 @@ public class MainMenu extends AppCompatActivity {
 
     /**
      * Starts ColorsActivity
+     *
      * @param view which calls this function by onClickk event
      */
     public void showColorsActivity(View view) {
@@ -58,9 +66,14 @@ public class MainMenu extends AppCompatActivity {
 
     /**
      * Starts PhraseActivity
+     *
      * @param view which calls this function by onClickk event
      */
     public void showPhraseActivity(View view) {
         startActivity(new Intent(this, PhraseActivity.class));
+    }
+
+    public void showAboutActivity(View view) {
+        startActivity(new Intent(this, AboutActivity.class));
     }
 }

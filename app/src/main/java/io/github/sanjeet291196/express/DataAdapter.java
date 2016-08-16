@@ -22,6 +22,7 @@ public class DataAdapter extends ArrayAdapter<DataItem> {
         @Override
         public void onInit(int status) {
         }
+
     });
 
     public DataAdapter(Context context, List<DataItem> objects) {
@@ -105,5 +106,9 @@ public class DataAdapter extends ArrayAdapter<DataItem> {
 
         //return the view
         return dataView;
+    }
+
+    public void shutdownt() {
+        t1.shutdown();
     }
 }

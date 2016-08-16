@@ -30,6 +30,18 @@ public class DataItem {
      */
     private boolean Phrase;
 
+    public DataItem() {
+    }
+
+    public DataItem(int imageResourceId, String englishTranslation, String hindiTranslation, String localTranslation, boolean plus10, boolean phrase) {
+        ImageResourceId = imageResourceId;
+        EnglishTranslation = englishTranslation;
+        HindiTranslation = hindiTranslation;
+        LocalTranslation = localTranslation;
+        Plus10 = plus10;
+        Phrase = phrase;
+    }
+
     /**
      * @param imageResourceId    asigned to ImageResourceId
      * @param englishTranslation asigned to EnglishTranslation
@@ -40,6 +52,7 @@ public class DataItem {
     public DataItem(int imageResourceId, String englishTranslation, String hindiTranslation, String localTranslation, boolean plus10) {
         ImageResourceId = imageResourceId;
         EnglishTranslation = englishTranslation;
+
         HindiTranslation = hindiTranslation;
         LocalTranslation = localTranslation;
         this.Plus10 = plus10;
@@ -80,11 +93,19 @@ public class DataItem {
         return ImageResourceId;
     }
 
+    public void setImageResourceId(int imageResourceId) {
+        ImageResourceId = imageResourceId;
+    }
+
     /**
      * @return english equivalent of object data
      */
     public String getEnglishTranslation() {
         return EnglishTranslation;
+    }
+
+    public void setEnglishTranslation(String englishTranslation) {
+        EnglishTranslation = englishTranslation;
     }
 
     /**
@@ -94,11 +115,19 @@ public class DataItem {
         return HindiTranslation;
     }
 
+    public void setHindiTranslation(String hindiTranslation) {
+        HindiTranslation = hindiTranslation;
+    }
+
     /**
      * @return local language equivalent of object data
      */
     public String getLocalTranslation() {
         return LocalTranslation;
+    }
+
+    public void setLocalTranslation(String localTranslation) {
+        LocalTranslation = localTranslation;
     }
 
     /**
@@ -108,10 +137,18 @@ public class DataItem {
         return Plus10;
     }
 
+    public void setPlus10(boolean plus10) {
+        Plus10 = plus10;
+    }
+
     /**
      * @return whether data stored is phrase or not
      */
     public boolean isPhrase() {
         return Phrase;
+    }
+
+    public void setPhrase(boolean phrase) {
+        Phrase = phrase;
     }
 }
