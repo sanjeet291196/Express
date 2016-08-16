@@ -6,6 +6,10 @@ import android.widget.ListView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
@@ -14,6 +18,10 @@ import java.util.ArrayList;
  *         ColorsActivity to diplay colors in different language
  */
 public class ColorsActivity extends AppCompatActivity {
+
+    private static final String REFERENCE_ID = "Colors";
+    DataAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +35,10 @@ public class ColorsActivity extends AppCompatActivity {
 
 
         // array list to store data items
-        ArrayList<DataItem> dataItems = new ArrayList<>();
-
-        // add color data items to dataItems array list
-        dataItems.add(new DataItem(R.drawable.color_black, "Black", "Kaala(काला)", ""));
-        dataItems.add(new DataItem(R.drawable.color_brown, "Brown", "Bhoora(भूरा)", ""));
-        dataItems.add(new DataItem(R.drawable.color_dusty_yellow, "Dusty Yellow", "Gehra Peela(गहरा पीला)", ""));
-        dataItems.add(new DataItem(R.drawable.color_gray, "Gray", "Bhoora(भूरा)", ""));
-        dataItems.add(new DataItem(R.drawable.color_green, "Green", "Hara(हरा)", ""));
-        dataItems.add(new DataItem(R.drawable.color_mustard_yellow, "Yellow", "Peela(पीला)", ""));
-        dataItems.add(new DataItem(R.drawable.color_red, "Red", "Laal(लाल)", ""));
-        dataItems.add(new DataItem(R.drawable.color_white, "White", "Saphed(सफेद)", ""));
+        final ArrayList<DataItem> dataItems = new ArrayList<>();
 
         // adapter for linking dataItems to colorItemListView
-        DataAdapter adapter = new DataAdapter(this, dataItems);
+        adapter = new DataAdapter(this, dataItems);
         // colorItemListView to display colors in related list
         ListView colorItemListView = (ListView) findViewById(R.id.color_item_listview);
         // set the adapter for the colorItemListView
@@ -48,5 +46,61 @@ public class ColorsActivity extends AppCompatActivity {
         // notify the adapter to refresh the list
         adapter.notifyDataSetChanged();
 
+        DatabaseReference reference = MainMenu.database.getReference(REFERENCE_ID);
+
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                DataItem newDataItem = dataSnapshot.getValue(DataItem.class);
+
+                if (newDataItem != null) {
+                    dataItems.add(newDataItem);
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    /*    DataItem[] dataItem = new DataItem[]{
+                (new DataItem(R.drawable.color_black, "Black", "Kaala(काला)", "")),
+                (new DataItem(R.drawable.color_brown, "Brown", "Bhoora(भूरा)", "")),
+                (new DataItem(R.drawable.color_dusty_yellow, "Dusty Yellow", "Gehra Peela(गहरा पीला)", "")),
+                (new DataItem(R.drawable.color_gray, "Gray", "Bhoora(भूरा)", "")),
+                (new DataItem(R.drawable.color_green, "Green", "Hara(हरा)", "")),
+                (new DataItem(R.drawable.color_mustard_yellow, "Yellow", "Peela(पीला)", "")),
+                (new DataItem(R.drawable.color_red, "Red", "Laal(लाल)", "")),
+                (new DataItem(R.drawable.color_white, "White", "Saphed(सफेद),", ""))
+        };
+
+        for (DataItem d : dataItem) {
+            reference.child(d.getEnglishTranslation()).setValue(d);
+        }
+*/
+    }
+
+    @Override
+    protected void onDestroy() {
+        adapter.shutdownt();
+        super.onDestroy();
     }
 }

@@ -6,6 +6,10 @@ import android.widget.ListView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
@@ -14,6 +18,10 @@ import java.util.ArrayList;
  *         FamilyMemberActivity to display names of family members in different languages
  */
 public class FamilyMemberActivity extends AppCompatActivity {
+
+    private static final String REFERENCE_ID = "Family Members";
+    DataAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,21 +35,10 @@ public class FamilyMemberActivity extends AppCompatActivity {
         adView.loadAd(adRequest);
 
         // array list to store data items
-        ArrayList<DataItem> dataItems = new ArrayList<>();
-        // add family member data items to dataItems array list
-        dataItems.add(new DataItem(R.drawable.family_grandfather, "Grand Father", "Daada(दादा)", "Tāta"));
-        dataItems.add(new DataItem(R.drawable.family_grandmother, "Grand Mother", "Daadee ma(दादी मा)", "Am'mam'ma"));
-        dataItems.add(new DataItem(R.drawable.family_father, "Father", "Pita(पिता)", "Taṇḍri"));
-        dataItems.add(new DataItem(R.drawable.family_mother, "Mother", "Maan(मां)", "Talli"));
-        dataItems.add(new DataItem(R.drawable.family_son, "Son", "Beta(बेटा)", "Kumāruḍu"));
-        dataItems.add(new DataItem(R.drawable.family_daughter, "Daughter", "Betee(बेटी)", "kumārte"));
-        dataItems.add(new DataItem(R.drawable.family_older_brother, "Elder Brother", "Bhaiyya(भैया)", "Annayya"));
-        dataItems.add(new DataItem(R.drawable.family_older_sister, "Elder Sister", "Deedee(दीदी)", "Akka"));
-        dataItems.add(new DataItem(R.drawable.family_younger_brother, "Younger Brother", "Bhaee(भाई)", "Tam'muḍu"));
-        dataItems.add(new DataItem(R.drawable.family_younger_sister, "Younger Sister", "Bahan(बहन)", "Chinna Celli"));
+        final ArrayList<DataItem> dataItems = new ArrayList<>();
 
         // adapter for linking dataItems to familyItemListView
-        DataAdapter adapter = new DataAdapter(this, dataItems);
+        adapter = new DataAdapter(this, dataItems);
         // familyItemListView to display colors in related list
         ListView familyItemListView = (ListView) findViewById(R.id.family_item_listview);
         // set the adapter for the familyItemListView
@@ -49,5 +46,63 @@ public class FamilyMemberActivity extends AppCompatActivity {
         // notify the adapter to refresh the list
         adapter.notifyDataSetChanged();
 
+        DatabaseReference reference = MainMenu.database.getReference(REFERENCE_ID);
+
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                DataItem newDataItem = dataSnapshot.getValue(DataItem.class);
+
+                if (newDataItem != null) {
+                    dataItems.add(newDataItem);
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+   /*     DataItem[] dataItem = new DataItem[]{
+                (new DataItem(R.drawable.family_grandfather, "Grand Father", "Daada(दादा)", "Tāta")),
+                (new DataItem(R.drawable.family_grandmother, "Grand Mother", "Daadee ma(दादी मा)", "Am'mam'ma")),
+                (new DataItem(R.drawable.family_father, "Father", "Pita(पिता)", "Taṇḍri")),
+                (new DataItem(R.drawable.family_mother, "Mother", "Maan(मां)", "Talli")),
+                (new DataItem(R.drawable.family_son, "Son", "Beta(बेटा)", "Kumāruḍu")),
+                (new DataItem(R.drawable.family_daughter, "Daughter", "Betee(बेटी)", "kumārte")),
+                (new DataItem(R.drawable.family_older_brother, "Elder Brother", "Bhaiyya(भैया)", "Annayya")),
+                (new DataItem(R.drawable.family_older_sister, "Elder Sister", "Deedee(दीदी)", "Akka")),
+                (new DataItem(R.drawable.family_younger_brother, "Younger Brother", "Bhaee(भाई)", "Tam'muḍu")),
+                (new DataItem(R.drawable.family_younger_sister, "Younger Sister", "Bahan(बहन)", "Chinna Celli"))
+        };
+
+        for (DataItem d : dataItem) {
+            reference.child(d.getEnglishTranslation()).setValue(d);
+        }
+*/
+    }
+
+    @Override
+    protected void onDestroy() {
+        adapter.shutdownt();
+        super.onDestroy();
     }
 }

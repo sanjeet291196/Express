@@ -7,4 +7,10 @@
     <string name="item_icon">Item Icon</string>
     <string name="banner_app_unit_id">ca-app-pub-6852300659518351/2825420623</string>
     <string name="ad_app_id">ca-app-pub-6852300659518351~2965021422</string>
+    <string name="express_your_self_in_different_languages">Yourself in different languages</string>
+    <string name="email">sanjeet291196@gmail.com</string>
+    <string name="author_name">Sanjit Singh Chouhan</string>
+    <string name="website">sanjeet291196.github.io</string>
+    <string name="about">About</string>
+    <string name="version">Version 2.0.0</string>
 </resources>

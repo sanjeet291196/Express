@@ -74,6 +74,18 @@
                 android:textColor="@color/colorText"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height"
+                android:background="@color/colorSecondaryText"
+                android:gravity="center_vertical"
+                android:onClick="showAboutActivity"
+                android:padding="@dimen/padding"
+                android:text="@string/about"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
