@@ -1,11 +1,13 @@
 package io.github.sanjeet291196.express;
 
+
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,35 +16,32 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.ArrayList;
 
 /**
- * @author sanjit
- *         PhraseActivity to display common phrases translations in different languages
+ * A simple {@link Fragment} subclass.
  */
-public class PhraseActivity extends AppCompatActivity {
+public class PhraseFragment extends Fragment {
 
     private static final String REFERENCE_ID = "Phrases";
-    DataAdapter adapter;
+    private DataAdapter adapter;
+
+    public PhraseFragment() {
+        // Required empty public constructor
+    }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phrase);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        AdView adView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("B57E80B764791677F26544661D06015F")
-                .build();
-        adView.loadAd(adRequest);
 
         // array list to store data items
         final ArrayList<DataItem> dataItems = new ArrayList<>();
 
         // adapter for linking dataItems to phraseItemListView
-        adapter = new DataAdapter(this, dataItems);
+        adapter = new DataAdapter(getActivity(), dataItems);
         // phraseItemListView to display colors in related list
-        ListView phraseItemListView = (ListView) findViewById(R.id.phrase_item_listview);
+        ListView phraseItemListView = (ListView) rootView.findViewById(R.id.item_listview);
+        phraseItemListView.setBackgroundColor(getResources().getColor(R.color.colorPhrase));
         // set the adapter for the phraseItemListView
         phraseItemListView.setAdapter(adapter);
         // notify the adapter to refresh the list
@@ -102,11 +101,13 @@ public class PhraseActivity extends AppCompatActivity {
             reference.child(id.replaceAll("[.]", "")).setValue(d);
         }
 */
+
+        return rootView;
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroyView() {
         adapter.shutdownt();
-        super.onDestroy();
+        super.onDestroyView();
     }
 }

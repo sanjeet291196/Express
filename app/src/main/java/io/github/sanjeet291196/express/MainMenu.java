@@ -2,8 +2,17 @@ package io.github.sanjeet291196.express;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -18,6 +27,10 @@ public class MainMenu extends AppCompatActivity {
 
 
     public static final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private static final int NUM_PAGES = 4;
+
+    private ViewPager pager;
+    private PagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,50 +45,72 @@ public class MainMenu extends AppCompatActivity {
                 .build();
         adView.loadAd(adRequest);
 
-        database.setPersistenceEnabled(true);
+        //   database.setPersistenceEnabled(true);
+
+        pager = (ViewPager) findViewById(R.id.pager);
+        adapter = new CategoryAdapter(getSupportFragmentManager());
+        pager.setAdapter(adapter);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(pager);
 
     }
 
-
-    /**
-     * Starts NumberActivity
-     *
-     * @param view which calls this function by onClickk event
-     */
-    public void showNumberActivity(View view) {
-        startActivity(new Intent(this, NumbersActivity.class));
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("About");
+        return super.onCreateOptionsMenu(menu);
     }
 
-    /**
-     * Starts FamilyMemberActivity
-     *
-     * @param view which calls this function by onClickk event
-     */
-    public void showFamilyActivity(View view) {
-        startActivity(new Intent(this, FamilyMemberActivity.class));
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getTitle().equals("About")) {
+            startActivity(new Intent(this, AboutActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Starts ColorsActivity
-     *
-     * @param view which calls this function by onClickk event
-     */
-    public void showColorsActivity(View view) {
-        startActivity(new Intent(this, ColorsActivity.class));
+    public void closeAd(View view) {
+        RelativeLayout adViewContainer = (RelativeLayout) findViewById(R.id.adViewContainer);
+        adViewContainer.setVisibility(View.GONE);
     }
 
-    /**
-     * Starts PhraseActivity
-     *
-     * @param view which calls this function by onClickk event
-     */
-    public void showPhraseActivity(View view) {
-        startActivity(new Intent(this, PhraseActivity.class));
-    }
+    private class CategoryAdapter extends FragmentStatePagerAdapter {
+        public CategoryAdapter(FragmentManager fm) {
+            super(fm);
+        }
 
-    public void showAboutActivity(View view) {
-        startActivity(new Intent(this, AboutActivity.class));
-    }
+        @Override
+        public Fragment getItem(int position) {
+            if (position == 0)
+                return new NumberFragment();
+            else if (position == 1)
+                return new FamilyMembersFragment();
+            else if (position == 2)
+                return new ColorsFragment();
+            else if (position == 3)
+                return new PhraseFragment();
+            return null;
+        }
 
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if (position == 0)
+                return "Numbers";
+            else if (position == 1)
+                return "Family Members";
+            else if (position == 2)
+                return "Colors";
+            else if (position == 3)
+                return "Phrases";
+            return super.getPageTitle(position);
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
+    }
 
 }
+

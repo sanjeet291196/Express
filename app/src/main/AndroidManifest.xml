@@ -22,22 +22,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NumbersActivity"
-            android:label="@string/numbers"
-            android:parentActivityName=".MainMenu" />
-        <activity
-            android:name=".FamilyMemberActivity"
-            android:label="@string/family"
-            android:parentActivityName=".MainMenu" />
-        <activity
-            android:name=".ColorsActivity"
-            android:label="@string/colors"
-            android:parentActivityName=".MainMenu" />
-        <activity
-            android:name=".PhraseActivity"
-            android:label="@string/phrase"
-            android:parentActivityName=".MainMenu" />
-        <activity
             android:name=".AboutActivity"
             android:label="About"
             android:parentActivityName=".MainMenu" />
