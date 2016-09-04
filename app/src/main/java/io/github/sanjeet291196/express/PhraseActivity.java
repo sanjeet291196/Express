@@ -28,6 +28,8 @@ public class PhraseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrase);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         AdView adView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("B57E80B764791677F26544661D06015F")

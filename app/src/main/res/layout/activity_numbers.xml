@@ -15,7 +15,8 @@
         android:layout_weight="1"
         android:background="@color/colorNumbers"
         android:divider="@color/colorDivider"
-        android:dividerHeight="1dp" />
+        android:dividerHeight="1dp"
+        android:drawSelectorOnTop="true" />
 
     <RelativeLayout
         android:layout_width="match_parent"

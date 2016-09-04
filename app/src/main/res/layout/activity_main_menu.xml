@@ -27,66 +27,97 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height"
-                android:background="@color/colorNumbers"
-                android:gravity="center_vertical"
-                android:onClick="showNumberActivity"
-                android:padding="@dimen/padding"
-                android:text="@string/numbers"
-                android:textColor="@color/colorText"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:background="@color/colorNumbers">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height"
-                android:background="@color/colorFamily"
-                android:gravity="center_vertical"
-                android:onClick="showFamilyActivity"
-                android:padding="@dimen/padding"
-                android:text="@string/family"
-                android:textColor="@color/colorText"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="showNumberActivity"
+                    android:padding="@dimen/padding"
+                    android:text="@string/numbers"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
 
-            <TextView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height"
-                android:background="@color/colorColors"
-                android:gravity="center_vertical"
-                android:onClick="showColorsActivity"
-                android:padding="@dimen/padding"
-                android:text="@string/colors"
-                android:textColor="@color/colorText"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:background="@color/colorFamily">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height"
-                android:background="@color/colorPhrase"
-                android:gravity="center_vertical"
-                android:onClick="showPhraseActivity"
-                android:padding="@dimen/padding"
-                android:text="@string/phrase"
-                android:textColor="@color/colorText"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="showFamilyActivity"
+                    android:padding="@dimen/padding"
+                    android:text="@string/family"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
 
-            <TextView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height"
-                android:background="@color/colorSecondaryText"
-                android:gravity="center_vertical"
-                android:onClick="showAboutActivity"
-                android:padding="@dimen/padding"
-                android:text="@string/about"
-                android:textColor="@color/colorText"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:background="@color/colorColors">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="showColorsActivity"
+                    android:padding="@dimen/padding"
+                    android:text="@string/colors"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPhrase">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="showPhraseActivity"
+                    android:padding="@dimen/padding"
+                    android:text="@string/phrase"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorSecondaryText">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="showAboutActivity"
+                    android:padding="@dimen/padding"
+                    android:text="@string/about"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
         </LinearLayout>
+
     </ScrollView>
 
 

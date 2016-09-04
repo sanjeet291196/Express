@@ -76,4 +76,6 @@ public class MainMenu extends AppCompatActivity {
     public void showAboutActivity(View view) {
         startActivity(new Intent(this, AboutActivity.class));
     }
+
+
 }
